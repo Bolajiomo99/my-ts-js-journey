@@ -29,4 +29,4 @@ function averageNumber(numbers) {
 const nums = [12, 5, 88, 3, 45, 88, -7]
 console.log(findMax(nums))
 console.log(findMin(nums))
-console.log(Math.round(averageNumber(nums))))
+console.log(Math.round(averageNumber(nums)))
