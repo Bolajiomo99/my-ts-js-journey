@@ -36,24 +36,47 @@
 // Stretch, only if you finish early: track their guesses in an array and print the full history at the end. That gives you a reason to use arrays before day 4 formally introduces them.
 */
 
+
+const secretNumber = Math.floor(Math.random() * 100) + 1;
+console.log(`(Cheat code: The number is ${secretNumber})`);
+
 // We give the user exactly 7 tries
 for (let attempt = 1; attempt <= 7; attempt++) {
   
-  // 1. Ask for a guess
+     // 1. Ask for a guess
   let guessString = prompt(`Attempt ${attempt} of 7. Guess a number between 1 and 100:`);
   
-  // 2. Convert the string into a real Number
+  // EDGE CASE 1: User pressed Cancel (prompt returns null)
+  if (guessString === null) {
+    console.log("Game cancelled by user.");
+    break; // Exit the loop entirely
+  }
+  
+    // 2. Convert the string into a real Number
   let guessNumber = Number(guessString);
   
-  // 3. Compare the guess to the secret number
+  // EDGE CASE 2: User typed letters (Number returns NaN)
+  // We use the built-in isNaN() function to check this
+  if (isNaN(guessNumber)) {
+    console.log("That is not a valid number! You just wasted a guess.");
+    continue; // Skip the rest of this loop and go to the next attempt
+  }
+  
+  // Core game logic
   if (guessNumber === secretNumber) {
     console.log(`Correct! You guessed it in ${attempt} tries.`);
-    break; // Stops the loop immediately because they won!
+    break; 
   } 
   else if (guessNumber < secretNumber) {
     console.log("Too low!");
   } 
   else if (guessNumber > secretNumber) {
     console.log("Too high!");
+  }
+
+  // GAME OVER CHECK
+  // If we reach the end of the loop and the attempt is 7, they lost.
+  if (attempt === 7) {
+    console.log(`Game Over! You ran out of guesses. The number was ${secretNumber}.`);
   }
 }
