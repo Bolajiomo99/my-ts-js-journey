@@ -15,7 +15,7 @@ celsiusToFahrenheit(100) is 212
 usdToNaira(nairaToUsd(5000)) should return close to 5000. Check whether it is exactly 5000 and connect the answer to the 0.1 + 0.2 surprise.
  */
 
-const EXCHANGE_RATE = 1650.35; // Using a messy decimal rate to demonstrate our precision test later
+const EXCHANGE_RATE = 1450; // Using a messy decimal rate to demonstrate our precision test later
 
 function nairaToUsd(amount) {
   return amount / EXCHANGE_RATE;
@@ -32,3 +32,14 @@ function celsiusToFahrenheit(celsius) {
 function kgToPounds(kg) {
   return kg * 2.20462;
 }
+
+console.log(celsiusToFahrenheit(0));
+console.log(celsiusToFahrenheit(100));
+// Currency & The Floating Point Check
+console.log(usdToNaira(nairaToUsd(5000)));
+// Using .toFixed(2) returns exchange-rate output
+console.log(nairaToUsd(5000).toFixed(2));
+console.log(usdToNaira(345).toFixed(2));
+// Using .toFixed(2) returns kgtoPounds output
+console.log(kgToPounds(1000).toFixed(2));
+
