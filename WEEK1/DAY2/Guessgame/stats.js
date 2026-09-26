@@ -26,6 +26,7 @@ function averageNumber(numbers) {
     return sum / numbers.length
 }
 
-console.log(findMax([12, 5, 88, 3, 45, 88, -7]))
-console.log(findMin([12, 5, 88, 3, 45, 88, -7]))
-console.log(Math.round(averageNumber([12, 5, 88, 3, 45, 88, -7])))
+const nums = [12, 5, 88, 3, 45, 88, -7]
+console.log(findMax(nums))
+console.log(findMin(nums))
+console.log(Math.round(averageNumber(nums))))
